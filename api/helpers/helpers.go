@@ -6,6 +6,7 @@ import (
 )
 
 func EnforceHTTP(url string) string {
+	// make every url https
 	if url[:4] != "http" {
 		return "http://" + url
 	}
@@ -13,7 +14,9 @@ func EnforceHTTP(url string) string {
 }
 
 func RemoveDomainError(url string) bool {
-
+	// basically this functions removes all the commonly found
+	// prefixes from URL such as http, https, www
+	// then checks of the remaining string is the DOMAIN itself
 	if url == os.Getenv("DOMAIN") {
 		return false
 	}
